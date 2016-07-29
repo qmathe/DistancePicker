@@ -1,15 +1,11 @@
 Distance Picker
 ===============
 
-Maintainer: Quentin Mathe <quentin.mathe@gmail.com>
-License: MIT License
-
-
 DistancePicker is a custom UIKit control to select a distance with a pan gesture. 
 It looks like a ruler with multiple distance marks. You can use it to set a 
-search radius on a map.
+search radius.
 
-For a use case, check [Placeboard](placeboardapp.com)
+For a use case, check [Placeboard](http://www.placeboardapp.com).
 
 Compatibility
 -------------
