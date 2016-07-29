@@ -197,7 +197,7 @@ public class DistancePicker : UIControl, UIDynamicAnimatorDelegate {
 
 	// #pragma mark - Animation State
 
-	var dynamicItem = CSCDynamicItem()
+	private var dynamicItem = DynamicItem()
 	var animator: UIDynamicAnimator!
 
 	func formattedMarksFromMarks(marks: [Double]) -> [String] {
@@ -398,4 +398,13 @@ class PanGestureRecognizer : UIPanGestureRecognizer {
 		super.touchesEnded(touches as Set<NSObject>, withEvent: event)
 		endEvent = event
 	}
+}
+
+
+private class DynamicItem : NSObject, UIDynamicItem {
+
+	@objc var center = CGPoint.zero
+	// Bounds must be initialized with a size bigger than zero to prevent an exception
+	@objc var bounds = CGRect(x: 0, y: 0, width: 1, height: 1)
+	@objc var transform = CGAffineTransform()
 }
