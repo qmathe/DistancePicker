@@ -58,8 +58,10 @@ public class DistancePicker : UIControl, UIDynamicAnimatorDelegate {
 
 	// #pragma mark - Appearance State
 
-	// was using systemFontOfSize(11) previously
-	var markAttributes = [NSFontAttributeName: UIFont(name: "Avenir-Medium", size: 13)!,
+	// Due to a bug in Swift 2.2, we have to call init explicity.
+	//
+	// Was using systemFontOfSize(11) previously.
+	var markAttributes = [NSFontAttributeName: UIFont.init(name: "Avenir-Medium", size: 13)!,
 	            NSParagraphStyleAttributeName: NSMutableParagraphStyle(),
 	           NSForegroundColorAttributeName: UIColor.grayColor().colorWithAlphaComponent(0.8)]
 	var markSpacing = CGFloat(50)
@@ -239,7 +241,7 @@ public class DistancePicker : UIControl, UIDynamicAnimatorDelegate {
 
 		animator = UIDynamicAnimator(referenceView: self)
 		animator.delegate = self
-		addGestureRecognizer(PanGestureRecognizer(target: self, action: "pan:"))
+		addGestureRecognizer(PanGestureRecognizer(target: self, action: #selector(DistancePicker.pan(_:))))
 	}
 	override public init(frame: CGRect) {
 		super.init(frame: frame)
