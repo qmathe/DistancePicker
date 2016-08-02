@@ -32,16 +32,16 @@ func milesFromMeters(meters: Double) -> Double {
 
 public class DistancePicker : UIControl, UIDynamicAnimatorDelegate {
 	
-	// #pragma mark - Cached State
+	// MARK: - Cached State
 
 	var formatter = MKDistanceFormatter()
 	
-	// #pragma mark - Target/Action State
+	// MARK: - Target/Action State
 	
 	weak var target: AnyObject?
 	var action: Selector?
 
-	// #pragma mark - Content State
+	// MARK: - Content State
 
 	var marks: [Double] = [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 2000, 3000, 5000, 10000, 20000, 30000, 50000, 100000, 200000, DBL_MAX] {
 		didSet {
@@ -56,7 +56,7 @@ public class DistancePicker : UIControl, UIDynamicAnimatorDelegate {
 		}
 	}
 
-	// #pragma mark - Appearance State
+	// MARK: - Appearance State
 
 	// Due to a bug in Swift 2.2, we have to call init explicity.
 	//
@@ -75,7 +75,7 @@ public class DistancePicker : UIControl, UIDynamicAnimatorDelegate {
 		return markSpacing * CGFloat(marks.count - 1)
 	}
 	
-	// #pragma mark - Selection State
+	// MARK: - Selection State
 
 	// The selected position on the mark line that starts with zero and ends 
 	// with -markLineLength.
@@ -131,7 +131,7 @@ public class DistancePicker : UIControl, UIDynamicAnimatorDelegate {
 		return selectedMark == DBL_MAX ? selectedMark : selectedMark + selectedIncrement
 	}
 	
-	// #pragma mark - Geometry State
+	// MARK: - Geometry State
 
 	// A zero offset doesn't represent the lowest mark, since the head that 
 	// selects a mark is not at the picker origin but at the bounds width middle.
@@ -197,7 +197,7 @@ public class DistancePicker : UIControl, UIDynamicAnimatorDelegate {
 		return offset + (newBounds.size.width - oldBounds.size.width) / 2
 	}
 
-	// #pragma mark - Animation State
+	// MARK: - Animation State
 
 	private var dynamicItem = DynamicItem()
 	var animator: UIDynamicAnimator!
@@ -230,7 +230,7 @@ public class DistancePicker : UIControl, UIDynamicAnimatorDelegate {
 		}
 	}
 
-	// #pragma mark - Initialization
+	// MARK: - Initialization
 
 	func setUp() {
 		formatter.unitStyle = MKDistanceFormatterUnitStyle.Abbreviated
@@ -253,7 +253,7 @@ public class DistancePicker : UIControl, UIDynamicAnimatorDelegate {
 		setUp()
 	}
 	
-	// #pragma mark - Event Handling
+	// MARK: - Event Handling
 	
 	func decelerationBehaviorWithVelocity(velocity: CGPoint) -> UIDynamicItemBehavior {
 		let inverseVelocity = CGPoint(x: velocity.x, y: 0)
@@ -289,7 +289,7 @@ public class DistancePicker : UIControl, UIDynamicAnimatorDelegate {
 		}
 	}
 
-	// #pragma mark Drawing
+	// MARK: Drawing
 
 	override public func drawRect(rect: CGRect) {
 		var position = CGPoint(x: offset, y: 0)
@@ -363,7 +363,7 @@ public class DistancePicker : UIControl, UIDynamicAnimatorDelegate {
 		line.stroke()
 	}
 	
-	// #pragma mark Dynamic Animator
+	// MARK: Dynamic Animator
 	
 	public func dynamicAnimatorDidPause(animator: UIDynamicAnimator) {
 		precondition(NSThread.isMainThread())
