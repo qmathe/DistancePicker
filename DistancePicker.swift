@@ -347,7 +347,7 @@ public class DistancePicker : UIControl, UIDynamicAnimatorDelegate {
 	
 	// MARK: Dynamic Animator
 	
-	private func dynamicAnimatorDidPause(animator: UIDynamicAnimator) {
+	public func dynamicAnimatorDidPause(animator: UIDynamicAnimator) {
 		precondition(NSThread.isMainThread())
 		
 		// Prevent the deceleration behavior to be called on rotation (overwriting 

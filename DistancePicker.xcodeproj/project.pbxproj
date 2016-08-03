@@ -1,0 +1,322 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		6009E2611D5226B3006424BD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6009E2601D5226B3006424BD /* AppDelegate.swift */; };
+		6009E2631D5226B3006424BD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6009E2621D5226B3006424BD /* ViewController.swift */; };
+		6009E2661D5226B3006424BD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6009E2641D5226B3006424BD /* Main.storyboard */; };
+		6009E2681D5226B3006424BD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6009E2671D5226B3006424BD /* Assets.xcassets */; };
+		6009E26B1D5226B3006424BD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6009E2691D5226B3006424BD /* LaunchScreen.storyboard */; };
+		6009E2731D522704006424BD /* DistancePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6009E2721D522704006424BD /* DistancePicker.swift */; };
+		6009E2791D522764006424BD /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6009E2781D522764006424BD /* MapKit.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		6009E25D1D5226B3006424BD /* DistancePicker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DistancePicker.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6009E2601D5226B3006424BD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		6009E2621D5226B3006424BD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		6009E2651D5226B3006424BD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		6009E2671D5226B3006424BD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		6009E26A1D5226B3006424BD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		6009E26C1D5226B3006424BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6009E2721D522704006424BD /* DistancePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DistancePicker.swift; sourceTree = "<group>"; };
+		6009E2741D522715006424BD /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		6009E2761D52271C006424BD /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		6009E2781D522764006424BD /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		6009E2821D5239FF006424BD /* DistancePicker-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DistancePicker-Bridging-Header.h"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6009E25A1D5226B3006424BD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6009E2791D522764006424BD /* MapKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		6009E2541D5226B3006424BD = {
+			isa = PBXGroup;
+			children = (
+				6009E2741D522715006424BD /* README.md */,
+				6009E2761D52271C006424BD /* LICENSE */,
+				6009E2721D522704006424BD /* DistancePicker.swift */,
+				6009E2821D5239FF006424BD /* DistancePicker-Bridging-Header.h */,
+				6009E25F1D5226B3006424BD /* Example */,
+				6009E2811D523996006424BD /* Frameworks */,
+				6009E25E1D5226B3006424BD /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		6009E25E1D5226B3006424BD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6009E25D1D5226B3006424BD /* DistancePicker.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6009E25F1D5226B3006424BD /* Example */ = {
+			isa = PBXGroup;
+			children = (
+				6009E2601D5226B3006424BD /* AppDelegate.swift */,
+				6009E2621D5226B3006424BD /* ViewController.swift */,
+				6009E2641D5226B3006424BD /* Main.storyboard */,
+				6009E2671D5226B3006424BD /* Assets.xcassets */,
+				6009E2691D5226B3006424BD /* LaunchScreen.storyboard */,
+				6009E26C1D5226B3006424BD /* Info.plist */,
+			);
+			path = Example;
+			sourceTree = "<group>";
+		};
+		6009E2811D523996006424BD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6009E2781D522764006424BD /* MapKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		6009E25C1D5226B3006424BD /* DistancePicker */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6009E26F1D5226B3006424BD /* Build configuration list for PBXNativeTarget "DistancePicker" */;
+			buildPhases = (
+				6009E2591D5226B3006424BD /* Sources */,
+				6009E25A1D5226B3006424BD /* Frameworks */,
+				6009E25B1D5226B3006424BD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DistancePicker;
+			productName = DistancePicker;
+			productReference = 6009E25D1D5226B3006424BD /* DistancePicker.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		6009E2551D5226B3006424BD /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = "Quentin Mathé";
+				TargetAttributes = {
+					6009E25C1D5226B3006424BD = {
+						CreatedOnToolsVersion = 7.3;
+					};
+				};
+			};
+			buildConfigurationList = 6009E2581D5226B3006424BD /* Build configuration list for PBXProject "DistancePicker" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 6009E2541D5226B3006424BD;
+			productRefGroup = 6009E25E1D5226B3006424BD /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6009E25C1D5226B3006424BD /* DistancePicker */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		6009E25B1D5226B3006424BD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6009E26B1D5226B3006424BD /* LaunchScreen.storyboard in Resources */,
+				6009E2681D5226B3006424BD /* Assets.xcassets in Resources */,
+				6009E2661D5226B3006424BD /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6009E2591D5226B3006424BD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6009E2731D522704006424BD /* DistancePicker.swift in Sources */,
+				6009E2631D5226B3006424BD /* ViewController.swift in Sources */,
+				6009E2611D5226B3006424BD /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		6009E2641D5226B3006424BD /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6009E2651D5226B3006424BD /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		6009E2691D5226B3006424BD /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6009E26A1D5226B3006424BD /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		6009E26D1D5226B3006424BD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		6009E26E1D5226B3006424BD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		6009E2701D5226B3006424BD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
+				INFOPLIST_FILE = "$(SRCROOT)/Example/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.quentinmathe.DistancePicker;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "DistancePicker-Bridging-Header.h";
+			};
+			name = Debug;
+		};
+		6009E2711D5226B3006424BD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
+				INFOPLIST_FILE = "$(SRCROOT)/Example/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.quentinmathe.DistancePicker;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "DistancePicker-Bridging-Header.h";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6009E2581D5226B3006424BD /* Build configuration list for PBXProject "DistancePicker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6009E26D1D5226B3006424BD /* Debug */,
+				6009E26E1D5226B3006424BD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6009E26F1D5226B3006424BD /* Build configuration list for PBXNativeTarget "DistancePicker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6009E2701D5226B3006424BD /* Debug */,
+				6009E2711D5226B3006424BD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 6009E2551D5226B3006424BD /* Project object */;
+}

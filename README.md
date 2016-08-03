@@ -17,4 +17,6 @@ DistancePicker requires iOS 7 or higher and is written in Swift 2.2.
 Installation
 ------------
 
-Just drop DistancePicker.swift in your Xcode project and link MapKit.
+Drop DistancePicker.swift in your Xcode project, copy the content of DistancePicker-Bridging-Header.h into your project bridging header and link MapKit.
+
+**Note:** If you don't use a bridging header, you must create one and declare it in Build Settings > Swift Compiler - Code Generation > Objective-C Bridging Header.
