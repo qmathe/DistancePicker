@@ -1,0 +1,8 @@
+language: objective-c
+notifications:
+  email:
+    recipients:
+      - quentin.mathe@gmail.com
+xcode_project: DistancePicker.xcodeproj
+xcode_scheme: DistancePicker
+osx_image: xcode7.3
