@@ -213,6 +213,7 @@ public class DistancePicker : UIControl, UIDynamicAnimatorDelegate {
 	// MARK: - Initialization
 
 	private func setUp() {
+		usesMetricSystem = shouldUseMetricSystem()
 		formatter.unitStyle = MKDistanceFormatterUnitStyle.Abbreviated
 
 		formattedMarks = formattedMarksFromMarks(marks)
@@ -371,7 +372,7 @@ public class DistancePicker : UIControl, UIDynamicAnimatorDelegate {
 
 // MARK: Unit Utilities
 
-public func usesMetricSystem() -> Bool {
+public func shouldUseMetricSystem() -> Bool {
 	let usesMetric = NSLocale.currentLocale().objectForKey(NSLocaleUsesMetricSystem)!.boolValue as Bool
 	let countryCode = NSLocale.currentLocale().objectForKey(NSLocaleCountryCode) as! String
 	
