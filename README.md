@@ -32,12 +32,14 @@ Add the following line to your Cartfile, run `carthage update` to build the fram
 
 ### Manually
 
+If you don't use Carthage, it's possible to drag the built framework or embed the source files into your project.
+
 #### Framework
 
-Build FormTouch framework and drop it into your Xcode project.
+Build DistancePicker framework and drop it into your Xcode project.
 
 #### Files
 
-Drop DistancePicker.swift and UIGestureRecognizer+MissingPublicAPI.h into your Xcode project, add `#import <DistancePicker/UIGestureRecognizer+MissingPublicAPI.h>` to your project bridging header and link MapKit.
+Drop DistancePicker.swift and UIGestureRecognizer+MissingPublicAPI.h into your Xcode project, add `#import <DistancePicker/UIGestureRecognizer+MissingPublicAPI.h>` to your bridging header and link MapKit.
 
 **Note:** If you don't use a bridging header, you must create one and declare it in Build Settings > Swift Compiler - Code Generation > Objective-C Bridging Header.
