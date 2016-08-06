@@ -19,9 +19,25 @@ Compatibility
 
 DistancePicker requires iOS 7 or higher and is written in Swift 2.2.
 
+**Note**: If you use Carthage or manually install it as a framework, iOS 8 is required.
+
 Installation
 ------------
 
-Drop DistancePicker.swift in your Xcode project, copy the content of DistancePicker-Bridging-Header.h into your project bridging header and link MapKit.
+### Carthage
+
+Add the following line to your Cartfile, run `carthage update` to build the framework and drag the built DistancePicker.framework into your Xcode project.
+
+    github "qmathe/DistancePicker"
+
+### Manually
+
+#### Framework
+
+Build FormTouch framework and drop it into your Xcode project.
+
+#### Files
+
+Drop DistancePicker.swift and UIGestureRecognizer+MissingPublicAPI.h into your Xcode project, add `#import <DistancePicker/UIGestureRecognizer+MissingPublicAPI.h>` to your project bridging header and link MapKit.
 
 **Note:** If you don't use a bridging header, you must create one and declare it in Build Settings > Swift Compiler - Code Generation > Objective-C Bridging Header.
