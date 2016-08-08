@@ -3,7 +3,7 @@ Pod::Spec.new do |s|
   s.name         = "DistancePicker"
   s.version      = "0.8"
   s.summary      = "UIKit control to select a distance with a pan gesture, written in Swift"
-  s.description  = "DistancePicker is a custom UIKit control to select a distance with a pan gesture. It looks like a ruler with multiple distance marks. You can use it to set a search radius."
+  s.description  = "DistancePicker is a custom UIKit control to select a distance with a pan gesture. It looks like a ruler with multiple distance marks and can be used to choose a search radius."
   s.homepage     = "https://github.com/qmathe/DistancePicker"
   s.screenshots  = "http://www.quentinmathe.com/github/DistancePicker/Add%20Place%20with%20Search%20Radius%20-%20iPhone%205.jpg"
   s.license      = "MIT"

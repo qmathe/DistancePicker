@@ -7,7 +7,7 @@ Distance Picker
 [![License MIT](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](https://github.com/qmathe/DistancePicker/LICENSE)
 
 DistancePicker is a custom UIKit control to select a distance with a pan gesture. 
-It looks like a ruler with multiple distance marks. You can use it to set a 
+It looks like a ruler with multiple distance marks and can be used to choose a 
 search radius.
 
 <img src="http://www.placeboardapp.com/images/Add%20Place%20with%20Search%20Radius%20-%20iPhone%205.jpg" height="700" alt="Screenshot" />
@@ -19,7 +19,7 @@ Compatibility
 
 DistancePicker requires iOS 7 or higher and is written in Swift 2.2.
 
-**Note**: If you use Carthage or manually install it as a framework, iOS 8 is required.
+**Note**: If you use Carthage, CocoaPods or manually install it as a framework, iOS 8 is required.
 
 Installation
 ------------
@@ -29,10 +29,18 @@ Installation
 Add the following line to your Cartfile, run `carthage update` to build the framework and drag the built DistancePicker.framework into your Xcode project.
 
     github "qmathe/DistancePicker"
+	
+### CocoaPods
+
+Add the following lines to your Podfile and run `pod install` with CocoaPods 0.36 or newer.
+
+	use_frameworks!
+	
+	pod "DistancePicker"
 
 ### Manually
 
-If you don't use Carthage, it's possible to drag the built framework or embed the source files into your project.
+If you don't use Carthage or CocoaPods, it's possible to drag the built framework or embed the source files into your project.
 
 #### Framework
 
