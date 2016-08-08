@@ -228,6 +228,7 @@ public class DistancePicker : UIControl, UIDynamicAnimatorDelegate {
 	override public init(frame: CGRect) {
 		super.init(frame: frame)
 		setUp()
+		backgroundColor = UIColor.whiteColor()
 	}
 	
 	required public init?(coder aDecoder: NSCoder) {
