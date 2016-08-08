@@ -6,9 +6,7 @@ Distance Picker
 [![Language Swift 2.2](https://img.shields.io/badge/Language-Swift%202.2-orange.svg?style=flat)](https://swift.org)
 [![License MIT](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](https://github.com/qmathe/DistancePicker/LICENSE)
 
-DistancePicker is a custom UIKit control to select a distance with a pan gesture. 
-It looks like a ruler with multiple distance marks and can be used to choose a 
-search radius.
+DistancePicker is a custom UIKit control to select a distance with a pan gesture. It looks like a ruler with multiple distance marks and can be used to resize a map, set up a geofence or choose a search radius.
 
 <img src="http://www.placeboardapp.com/images/Add%20Place%20with%20Search%20Radius%20-%20iPhone%205.jpg" height="700" alt="Screenshot" />
 
