@@ -1,10 +1,9 @@
-//
-//  DistancePicker.h
-//  DistancePicker
-//
-//  Created by Quentin Mathé on 05/08/2016.
-//  Copyright © 2016 Quentin Mathé. All rights reserved.
-//
+/*
+	Copyright (C) 2016 Quentin Mathe
+ 
+	Date:  August 2016
+	License:  MIT
+ */
 
 #import <UIKit/UIKit.h>
 
