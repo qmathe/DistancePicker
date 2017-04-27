@@ -6,4 +6,4 @@ notifications:
 xcode_project: DistancePicker.xcodeproj
 xcode_scheme: DistancePicker
 osx_image: xcode8.1
-/*script: xctool -project DistancePicker.xcodeproj -scheme DistancePicker build  CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO*/
+#script: xctool -project DistancePicker.xcodeproj -scheme DistancePicker build  CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
