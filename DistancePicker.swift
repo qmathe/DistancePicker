@@ -10,28 +10,28 @@ import UIKit
 import MapKit
 
 
-public class DistancePicker : UIControl, UIDynamicAnimatorDelegate {
+open class DistancePicker : UIControl, UIDynamicAnimatorDelegate {
 	
 	// MARK: - Cached State
 
-	public var formatter = MKDistanceFormatter()
+	open var formatter = MKDistanceFormatter()
 	
 	// MARK: - Target/Action State
 	
-	public weak var target: AnyObject?
-	public var action: Selector?
+	open weak var target: AnyObject?
+	open var action: Selector?
 
 	// MARK: - Content State
 
-	public var marks: [Double] = [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 2000, 3000, 5000, 10000, 20000, 30000, 50000, 100000, 200000, DBL_MAX] {
+	open var marks: [Double] = [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 2000, 3000, 5000, 10000, 20000, 30000, 50000, 100000, 200000, DBL_MAX] {
 		didSet {
 			formattedMarks = formattedMarksFromMarks(marks)
 		}
 	}
-	public var formattedMarks: [String]!
-	public var usesMetricSystem: Bool = true {
+	open var formattedMarks: [String]!
+	open var usesMetricSystem: Bool = true {
 		didSet {
-			formatter.units = usesMetricSystem ? .Metric : .Imperial
+			formatter.units = usesMetricSystem ? .metric : .imperial
 			formattedMarks = formattedMarksFromMarks(marks)
 		}
 	}
@@ -41,17 +41,17 @@ public class DistancePicker : UIControl, UIDynamicAnimatorDelegate {
 	// Due to a bug in Swift 2.2, we have to call init explicity.
 	//
 	// Was using systemFontOfSize(11) previously.
-	public var markAttributes = [NSFontAttributeName: UIFont.init(name: "Avenir-Medium", size: 13)!,
+	open var markAttributes = [NSFontAttributeName: UIFont.init(name: "Avenir-Medium", size: 13)!,
 	                   NSParagraphStyleAttributeName: NSMutableParagraphStyle(),
-	                  NSForegroundColorAttributeName: UIColor.grayColor().colorWithAlphaComponent(0.8)]
-	public var markSpacing = CGFloat(50)
-	public var markColor = UIColor.lightGrayColor()
-	public var numberOfIncrementsBetweenMarks = 5
-	public var incrementSpacing: CGFloat {
+	                  NSForegroundColorAttributeName: UIColor.gray.withAlphaComponent(0.8)]
+	open var markSpacing = CGFloat(50)
+	open var markColor = UIColor.lightGray
+	open var numberOfIncrementsBetweenMarks = 5
+	open var incrementSpacing: CGFloat {
 		return markSpacing / CGFloat(numberOfIncrementsBetweenMarks)
 	}
-	public var incrementColor = UIColor.lightGrayColor().colorWithAlphaComponent(0.5)
-	public var markLineLength: CGFloat {
+	open var incrementColor = UIColor.lightGray.withAlphaComponent(0.5)
+	open var markLineLength: CGFloat {
 		return markSpacing * CGFloat(marks.count - 1)
 	}
 	
@@ -62,37 +62,37 @@ public class DistancePicker : UIControl, UIDynamicAnimatorDelegate {
 	// This position usually falls between two mark positions. We can extract
 	// the lower and upper marks with floor(), ceil() or round() to round it
 	// towards the closest mark.
-	public var selectedPosition: CGFloat {
+	open var selectedPosition: CGFloat {
 		return bounds.width * 0.5 - offset
 	}
-	public var selectedMarkIndex: Int  {
+	open var selectedMarkIndex: Int  {
 		return previousMarkIndex
 	}
 	// The index of the mark before the selected point
-	private var previousMarkIndex: Int {
+	fileprivate var previousMarkIndex: Int {
 		let markIndex = Int(floor(selectedPosition / markSpacing))
 		return markIndex > (marks.count - 1) ? marks.count - 1 : markIndex
 	}
 	// The index of the mark after the selected point
-	private var nextMarkIndex: Int {
+	fileprivate var nextMarkIndex: Int {
 		let markIndex = Int(ceil(selectedPosition / markSpacing))
 		return markIndex > (marks.count - 1) ? marks.count - 1 : markIndex
 	}
-	public var selectedMark: Double {
+	open var selectedMark: Double {
 		//print("Selected mark index \(selectedMarkIndex)")
 		return marks[selectedMarkIndex]
 	}
-	public var selectedFormattedMark: String {
+	open var selectedFormattedMark: String {
 		return formattedMarks[selectedMarkIndex]
 	}
-	public var selectedIncrementIndex: Int {
+	open var selectedIncrementIndex: Int {
 		let selectedMarkPosition = CGFloat(selectedMarkIndex) * markSpacing
 		let positionFromMark = selectedPosition - selectedMarkPosition
 		let incrementIndex = Int(round(positionFromMark / incrementSpacing))
 
 		return incrementIndex > (numberOfIncrementsBetweenMarks - 1) ? numberOfIncrementsBetweenMarks - 1 : incrementIndex
 	}
-	public var selectedIncrement: Double {
+	open var selectedIncrement: Double {
 		// When the next mark is the last one (infinite), we use a 1000 km as
 		// our last mark value, to compute the increment on a range between
 		// 200 km and 1000 km.
@@ -106,7 +106,7 @@ public class DistancePicker : UIControl, UIDynamicAnimatorDelegate {
 		
 		return Double(selectedIncrementIndex) * incrementValue
 	}
-	public var selectedValue: Double {
+	open var selectedValue: Double {
 		//print("Selected mark \(selectedMark) increment \(selectedIncrement)")
 		return selectedMark == DBL_MAX ? selectedMark : selectedMark + selectedIncrement
 	}
@@ -127,7 +127,7 @@ public class DistancePicker : UIControl, UIDynamicAnimatorDelegate {
 	// moving the bounds would move the picker head (putting the picker head 
 	// in another layer is not so helpful since we must redraw the selected
 	// increment and mark with the tint color too)
-	public var offset: CGFloat = CGFloat(0) {
+	open var offset: CGFloat = CGFloat(0) {
 		didSet {
 			if offset > maxOffset {
 				offset = maxOffset
@@ -141,22 +141,22 @@ public class DistancePicker : UIControl, UIDynamicAnimatorDelegate {
 	}
 	// The minimum offset corresponds to the infinite mark, since we move the
 	// picker to the left (the offset grows towards negative numbers).
-	public var minOffset: CGFloat {
+	open var minOffset: CGFloat {
 		return -(markLineLength - (bounds.size.width * 0.5))
 	}
 	// The maximum offset corresponds to the zero mark, since we move the
 	// picker to the right (the offset grows towards positive numbers).
-	public var maxOffset: CGFloat {
+	open var maxOffset: CGFloat {
 		return bounds.size.width * 0.5
 	}
-	private var normalizedBounds: CGRect {
+	fileprivate var normalizedBounds: CGRect {
 		var normalizedBounds = bounds
 		normalizedBounds.size.width = 1000
 		return normalizedBounds
 	}
 	// An offset that can be saved and reloaded indepently of the distance 
 	// picker bounds (e.g. when the screen is rotated or bigger/smaller)
-	public var normalizedOffset: CGFloat {
+	open var normalizedOffset: CGFloat {
 		get {
 			return convertOffset(offset, fromBounds: bounds, toBounds: normalizedBounds)
 		}
@@ -165,13 +165,13 @@ public class DistancePicker : UIControl, UIDynamicAnimatorDelegate {
 		}
 	}
 	// Adjust the offset on resizing (this means screen rotation is supported)
-	override public var frame: CGRect {
+	override open var frame: CGRect {
 		didSet {
 			offset = convertOffset(offset, fromBounds: oldValue, toBounds: frame)
     	}
 	}
 	
-	public func convertOffset(offset: CGFloat,
+	open func convertOffset(_ offset: CGFloat,
 	               fromBounds oldBounds: CGRect,
 	                 toBounds newBounds: CGRect) -> CGFloat {
 		return offset + (newBounds.size.width - oldBounds.size.width) / 2
@@ -179,10 +179,10 @@ public class DistancePicker : UIControl, UIDynamicAnimatorDelegate {
 
 	// MARK: - Animation State
 
-	private var dynamicItem = DynamicItem()
-	public var animator: UIDynamicAnimator!
+	fileprivate var dynamicItem = DynamicItem()
+	open var animator: UIDynamicAnimator!
 
-	public func formattedMarksFromMarks(marks: [Double]) -> [String] {
+	open func formattedMarksFromMarks(_ marks: [Double]) -> [String] {
 		// For non-metric system, here is how we interpret the base marks in the 
 		// imperial system:
 		//
@@ -206,19 +206,19 @@ public class DistancePicker : UIControl, UIDynamicAnimatorDelegate {
 			}
 			
 			// Distance argument must be in meters
-			return self.formatter.stringFromDistance($0 as CLLocationDistance)
+			return self.formatter.string(fromDistance: $0 as CLLocationDistance)
 		}
 	}
 
 	// MARK: - Initialization
 
-	private func setUp() {
+	fileprivate func setUp() {
 		usesMetricSystem = shouldUseMetricSystem()
-		formatter.unitStyle = MKDistanceFormatterUnitStyle.Abbreviated
+		formatter.unitStyle = MKDistanceFormatterUnitStyle.abbreviated
 
 		formattedMarks = formattedMarksFromMarks(marks)
 		let style = markAttributes[NSParagraphStyleAttributeName] as! NSMutableParagraphStyle
-		style.alignment = NSTextAlignment.Center;
+		style.alignment = NSTextAlignment.center;
 
 		animator = UIDynamicAnimator(referenceView: self)
 		animator.delegate = self
@@ -228,7 +228,7 @@ public class DistancePicker : UIControl, UIDynamicAnimatorDelegate {
 	override public init(frame: CGRect) {
 		super.init(frame: frame)
 		setUp()
-		backgroundColor = UIColor.whiteColor()
+		backgroundColor = UIColor.white
 	}
 	
 	required public init?(coder aDecoder: NSCoder) {
@@ -238,13 +238,13 @@ public class DistancePicker : UIControl, UIDynamicAnimatorDelegate {
 	
 	// MARK: - Event Handling
 	
-	public func decelerationBehaviorWithVelocity(velocity: CGPoint) -> UIDynamicItemBehavior {
+	open func decelerationBehaviorWithVelocity(_ velocity: CGPoint) -> UIDynamicItemBehavior {
 		let inverseVelocity = CGPoint(x: velocity.x, y: 0)
 		let decelerationBehavior = UIDynamicItemBehavior(items: [dynamicItem])
 
 		dynamicItem.center = CGPoint(x: offset, y: 0)
 
-		decelerationBehavior.addLinearVelocity(inverseVelocity, forItem: dynamicItem);
+		decelerationBehavior.addLinearVelocity(inverseVelocity, for: dynamicItem);
 		decelerationBehavior.resistance = 4.0
 		decelerationBehavior.action = {
 			self.offset = self.dynamicItem.center.x
@@ -253,19 +253,19 @@ public class DistancePicker : UIControl, UIDynamicAnimatorDelegate {
 		return decelerationBehavior
 	}
 
-	public func pan(recognizer: UIPanGestureRecognizer) {
-		let velocity = recognizer.velocityInView(self)
+	open func pan(_ recognizer: UIPanGestureRecognizer) {
+		let velocity = recognizer.velocity(in: self)
 		
-		if recognizer.state == UIGestureRecognizerState.Began {
+		if recognizer.state == UIGestureRecognizerState.began {
 			animator.removeAllBehaviors()
 		}
-		else if recognizer.state == UIGestureRecognizerState.Changed {
+		else if recognizer.state == UIGestureRecognizerState.changed {
 			assert(animator.behaviors.isEmpty)
 
-			offset += recognizer.translationInView(self).x
-			recognizer.setTranslation(CGPointZero, inView: self)
+			offset += recognizer.translation(in: self).x
+			recognizer.setTranslation(CGPoint.zero, in: self)
 		}
-		else if recognizer.state == UIGestureRecognizerState.Ended {
+		else if recognizer.state == UIGestureRecognizerState.ended {
 			assert(animator.behaviors.isEmpty)
 
 			animator.addBehavior(decelerationBehaviorWithVelocity(velocity))
@@ -274,7 +274,7 @@ public class DistancePicker : UIControl, UIDynamicAnimatorDelegate {
 
 	// MARK: Drawing
 
-	override public func drawRect(rect: CGRect) {
+	override open func draw(_ rect: CGRect) {
 		var position = CGPoint(x: offset, y: 0)
 
 		for mark in formattedMarks {
@@ -297,7 +297,7 @@ public class DistancePicker : UIControl, UIDynamicAnimatorDelegate {
 				//markValueRect.origin.y -= (selectedFont.capHeight - font.capHeight) / 2
 			}
 			
-			mark.drawInRect(markValueRect, withAttributes: attributes)
+			mark.draw(in: markValueRect, withAttributes: attributes)
 
 			if formattedMarks.last != mark {
 				drawMarkIncrementsFromPosition(position)
@@ -311,7 +311,7 @@ public class DistancePicker : UIControl, UIDynamicAnimatorDelegate {
 		  withColor: tintColor)
 	}
 	
-	public func drawMarkIncrementsFromPosition(startPosition: CGPoint) {
+	open func drawMarkIncrementsFromPosition(_ startPosition: CGPoint) {
 		let incrementSpacing = markSpacing / CGFloat(numberOfIncrementsBetweenMarks)
 		var position = CGPoint(x: startPosition.x + incrementSpacing, y: startPosition.y)
 
@@ -326,9 +326,9 @@ public class DistancePicker : UIControl, UIDynamicAnimatorDelegate {
 		}
 	}
 	
-	private func markValueRectForPosition(position: CGPoint) -> CGRect {
+	fileprivate func markValueRectForPosition(_ position: CGPoint) -> CGRect {
 		let maxWidth = markSpacing
-		let maxHeight = CGFloat.max
+		let maxHeight = CGFloat.greatestFiniteMagnitude
 		// Was using 12 previously
 		let yOffset: CGFloat = 16
 
@@ -338,19 +338,19 @@ public class DistancePicker : UIControl, UIDynamicAnimatorDelegate {
 		         height: maxHeight)
 	}
 	
-	public func drawLineFrom(startPoint: CGPoint, to endPoint: CGPoint, withColor color: UIColor) {
+	open func drawLineFrom(_ startPoint: CGPoint, to endPoint: CGPoint, withColor color: UIColor) {
 		let line = UIBezierPath();
 		
-		line.moveToPoint(startPoint);
-		line.addLineToPoint(endPoint);
+		line.move(to: startPoint);
+		line.addLine(to: endPoint);
 		color.setStroke()
 		line.stroke()
 	}
 	
 	// MARK: Dynamic Animator
 	
-	public func dynamicAnimatorDidPause(animator: UIDynamicAnimator) {
-		precondition(NSThread.isMainThread())
+	open func dynamicAnimatorDidPause(_ animator: UIDynamicAnimator) {
+		precondition(Thread.isMainThread)
 		
 		// Prevent the deceleration behavior to be called on rotation (overwriting 
 		// the offset set with frame.didSet)
@@ -366,7 +366,7 @@ public class DistancePicker : UIControl, UIDynamicAnimatorDelegate {
 		}
 		sendAction(action!,
 		       to: target!,
-		 forEvent: (gestureRecognizers![0] as! PanGestureRecognizer).endEvent)
+		 for: (gestureRecognizers![0] as! PanGestureRecognizer).endEvent)
 	}
 }
 
@@ -374,20 +374,20 @@ public class DistancePicker : UIControl, UIDynamicAnimatorDelegate {
 // MARK: Unit Utilities
 
 public func shouldUseMetricSystem() -> Bool {
-	let usesMetric = NSLocale.currentLocale().objectForKey(NSLocaleUsesMetricSystem)!.boolValue as Bool
-	let countryCode = NSLocale.currentLocale().objectForKey(NSLocaleCountryCode) as! String
+	let usesMetric = ((Locale.current as NSLocale).object(forKey: NSLocale.Key.usesMetricSystem)! as AnyObject).boolValue as Bool
+	let countryCode = (Locale.current as NSLocale).object(forKey: NSLocale.Key.countryCode) as! String
 	
 	return usesMetric && countryCode != "GB"
 }
 
-public func metersFromMiles(miles: Double) -> Double {
+public func metersFromMiles(_ miles: Double) -> Double {
 	if miles == DBL_MAX {
 		return DBL_MAX
 	}
 	return miles * 1609.344
 }
 
-public func milesFromMeters(meters: Double) -> Double {
+public func milesFromMeters(_ meters: Double) -> Double {
 	if meters == DBL_MAX {
 		return DBL_MAX
 	}
@@ -401,13 +401,13 @@ private class PanGestureRecognizer : UIPanGestureRecognizer {
 	
 	var endEvent: UIEvent?
 
-	override func touchesBegan(touches: Set<NSObject>!, withEvent event: UIEvent!) {
-		super.touchesBegan(touches as Set<NSObject>, withEvent: event)
+	func touchesBegan(_ touches: Set<NSObject>!, with event: UIEvent!) {
+		super.touchesBegan(touches as Set<NSObject>, with: event)
 		endEvent = nil
 	}
 
-	override func touchesEnded(touches: Set<NSObject>!, withEvent event: UIEvent!) {
-		super.touchesEnded(touches as Set<NSObject>, withEvent: event)
+	func touchesEnded(_ touches: Set<NSObject>!, with event: UIEvent!) {
+		super.touchesEnded(touches as Set<NSObject>, with: event)
 		endEvent = event
 	}
 }
