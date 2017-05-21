@@ -17,7 +17,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
 	var searchRadiusActive: Bool {
 		return distancePicker.selectedValue != DBL_MAX && isValidAuthorizationStatus(authorizationStatus)
 	}
-	var authorizationStatus = CLAuthorizationStatus.NotDetermined
+	var authorizationStatus = CLAuthorizationStatus.notDetermined
 	var locationManager = CLLocationManager()
 	
 	// MARK: - Configuration
@@ -32,18 +32,18 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
 		distancePicker.action = #selector(updateUI)
 
 		mapView.delegate = self
-		mapView.hidden = true
+		mapView.isHidden = true
 
 		locationManager.delegate = self
 		locationManager.requestWhenInUseAuthorization()
 	}
 
-	func isValidAuthorizationStatus(status: CLAuthorizationStatus) -> Bool {
+	func isValidAuthorizationStatus(_ status: CLAuthorizationStatus) -> Bool {
 		// For iOS 7, AuthorizedAlways corresponds to Authorized
-		return status == CLAuthorizationStatus.AuthorizedWhenInUse || status == CLAuthorizationStatus.AuthorizedAlways
+		return status == CLAuthorizationStatus.authorizedWhenInUse || status == CLAuthorizationStatus.authorizedAlways
 	}
 
-	func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+	func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
 		authorizationStatus = status
 
 		if isValidAuthorizationStatus(status) {
@@ -61,14 +61,14 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
 	
 	func updateSearchRadiusOverlay() {
 		if let overlay = searchRadiusOverlay {
-			mapView.removeOverlay(overlay)
+			mapView.remove(overlay)
 			searchRadiusOverlay = nil
 		}
 
 		if searchRadiusActive {
-			searchRadiusOverlay = MKCircle(centerCoordinate: mapView.userLocation.coordinate,
+			searchRadiusOverlay = MKCircle(center: mapView.userLocation.coordinate,
 			                                         radius: distancePicker.selectedValue)
-			mapView.addOverlay(searchRadiusOverlay!)
+			mapView.add(searchRadiusOverlay!)
 		}
 	}
 	
@@ -80,25 +80,26 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
 			mapView.setVisibleMapRect(mapRect, animated: false)
 		}
 		else if isValidAuthorizationStatus(authorizationStatus) {
-			mapView.setCenterCoordinate(mapView.userLocation.coordinate, animated: true)
+			mapView.setCenter(mapView.userLocation.coordinate, animated: true)
 		}
 		// On launch, hide the map until we know the user location, otherwise 
 		// the map is briefly centered on another location.
-		mapView.hidden = false
+		mapView.isHidden = false
 	}
 	
 	// MARK: - Map View Delegate
 	
-	func mapView(mapView: MKMapView, didUpdateUserLocation userLocation: MKUserLocation) {
+	func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
 		updateUI()
 	}
 	
-    func mapView(mapView: MKMapView, rendererForOverlay overlay: MKOverlay) -> MKOverlayRenderer {
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         if overlay is MKCircle {
+            
             let circle = MKCircleRenderer(overlay: overlay)
 
-            circle.strokeColor = UIColor.redColor()
-            circle.fillColor = UIColor.redColor().colorWithAlphaComponent(0.1)
+            circle.strokeColor = UIColor.red
+            circle.fillColor = UIColor.red.withAlphaComponent(0.1)
             circle.lineWidth = 1
 
             return circle
