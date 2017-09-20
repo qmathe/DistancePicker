@@ -23,7 +23,7 @@ open class DistancePicker : UIControl, UIDynamicAnimatorDelegate {
 
 	// MARK: - Content State
 
-	open var marks: [Double] = [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 2000, 3000, 5000, 10000, 20000, 30000, 50000, 100000, 200000, DBL_MAX] {
+	open var marks: [Double] = [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 2000, 3000, 5000, 10000, 20000, 30000, 50000, 100000, 200000, .greatestFiniteMagnitude] {
 		didSet {
 			formattedMarks = formattedMarksFromMarks(marks)
 		}
@@ -97,8 +97,8 @@ open class DistancePicker : UIControl, UIDynamicAnimatorDelegate {
 		// our last mark value, to compute the increment on a range between
 		// 200 km and 1000 km.
 		let maxMarkForIncrement = Double(1000000)
-		let nextMark = marks[nextMarkIndex] == DBL_MAX ? maxMarkForIncrement : marks[nextMarkIndex]
-		let previousMark = marks[previousMarkIndex] == DBL_MAX ? maxMarkForIncrement : marks[previousMarkIndex]
+		let nextMark = marks[nextMarkIndex] == .greatestFiniteMagnitude ? maxMarkForIncrement : marks[nextMarkIndex]
+		let previousMark = marks[previousMarkIndex] == .greatestFiniteMagnitude ? maxMarkForIncrement : marks[previousMarkIndex]
 		let incrementTotal = nextMark - previousMark
 		//print("Increment total \(incrementTotal)")
 		assert(incrementTotal >= 0 && incrementTotal <= maxMarkForIncrement)
@@ -108,7 +108,7 @@ open class DistancePicker : UIControl, UIDynamicAnimatorDelegate {
 	}
 	open var selectedValue: Double {
 		//print("Selected mark \(selectedMark) increment \(selectedIncrement)")
-		return selectedMark == DBL_MAX ? selectedMark : selectedMark + selectedIncrement
+		return selectedMark == .greatestFiniteMagnitude ? selectedMark : selectedMark + selectedIncrement
 	}
 	
 	// MARK: - Geometry State
@@ -195,13 +195,13 @@ open class DistancePicker : UIControl, UIDynamicAnimatorDelegate {
 		//
 		// Note: there is no unit attached to the 'marks' property initially.
 		let meterMarks = usesMetricSystem ? marks : marks.map {
-			let miles = $0 == DBL_MAX ? DBL_MAX : $0 / 1000
+			let miles = $0 == .greatestFiniteMagnitude ? .greatestFiniteMagnitude : $0 / 1000
 
 			return metersFromMiles(miles)
 		}
 
 		return meterMarks.map {
-			if $0 == DBL_MAX {
+			if $0 == .greatestFiniteMagnitude {
 				return "∞"
 			}
 			
@@ -381,15 +381,15 @@ public func shouldUseMetricSystem() -> Bool {
 }
 
 public func metersFromMiles(_ miles: Double) -> Double {
-	if miles == DBL_MAX {
-		return DBL_MAX
+	if miles == .greatestFiniteMagnitude {
+		return .greatestFiniteMagnitude
 	}
 	return miles * 1609.344
 }
 
 public func milesFromMeters(_ meters: Double) -> Double {
-	if meters == DBL_MAX {
-		return DBL_MAX
+	if meters == .greatestFiniteMagnitude {
+		return .greatestFiniteMagnitude
 	}
 	return meters * 0.000621371192
 }

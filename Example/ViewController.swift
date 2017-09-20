@@ -15,7 +15,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
 	@IBOutlet var mapView: MKMapView!
 	var searchRadiusOverlay: MKOverlay?
 	var searchRadiusActive: Bool {
-		return distancePicker.selectedValue != DBL_MAX && isValidAuthorizationStatus(authorizationStatus)
+		return distancePicker.selectedValue != .greatestFiniteMagnitude && isValidAuthorizationStatus(authorizationStatus)
 	}
 	var authorizationStatus = CLAuthorizationStatus.notDetermined
 	var locationManager = CLLocationManager()
