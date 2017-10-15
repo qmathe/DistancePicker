@@ -374,10 +374,7 @@ open class DistancePicker : UIControl, UIDynamicAnimatorDelegate {
 // MARK: Unit Utilities
 
 public func shouldUseMetricSystem() -> Bool {
-	let usesMetric = ((Locale.current as NSLocale).object(forKey: NSLocale.Key.usesMetricSystem)! as AnyObject).boolValue as Bool
-	let countryCode = (Locale.current as NSLocale).object(forKey: NSLocale.Key.countryCode) as! String
-	
-	return usesMetric && countryCode != "GB"
+	return Locale.current.usesMetricSystem && Locale.current.regionCode != "GB"
 }
 
 public func metersFromMiles(_ miles: Double) -> Double {
