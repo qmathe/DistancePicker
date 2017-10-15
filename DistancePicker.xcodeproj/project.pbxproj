@@ -143,7 +143,6 @@
 				6065F4901D54A9F30063187A /* Info.plist */,
 			);
 			name = "Supporting Files";
-			path = DistancePicker;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
