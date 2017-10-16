@@ -165,6 +165,12 @@ open class DistancePicker : UIControl, UIDynamicAnimatorDelegate {
 		}
 	}
 	// Adjust the offset on resizing (this means screen rotation is supported)
+	override open var bounds: CGRect {
+		didSet {
+			offset = convertOffset(offset, fromBounds: oldValue, toBounds: bounds)
+    	}
+	}
+	// Fallback to cover the case where DistancePicker.bounds.set isn't called on resizing (prior to iOS 10)
 	override open var frame: CGRect {
 		didSet {
 			offset = convertOffset(offset, fromBounds: oldValue, toBounds: frame)

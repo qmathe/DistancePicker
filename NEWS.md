@@ -5,6 +5,7 @@ DistancePicker NEWS
 -----
 
 - Migrated to Swift 3
+- Fixed missing redraw when rotating the device on iOS 10 or higher
 
 0.8
 ---
