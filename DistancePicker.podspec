@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "DistancePicker"
-  s.version      = "0.8"
+  s.version      = "0.8.1"
   s.summary      = "UIKit control to select a distance with a pan gesture, written in Swift"
   s.description  = "DistancePicker is a custom UIKit control to select a distance with a pan gesture. It looks like a ruler with multiple distance marks and can be used to resize a map, set up a geofence or choose a search radius."
   s.homepage     = "https://github.com/qmathe/DistancePicker"
@@ -12,7 +12,7 @@ Pod::Spec.new do |s|
 
   s.platform     = :ios, "8.0"
 
-  s.source       = { :git => "https://github.com/qmathe/DistancePicker.git", :tag => "0.8" }
+  s.source       = { :git => "https://github.com/qmathe/DistancePicker.git", :tag => "0.8.1" }
   s.source_files = '*.swift', '*.{h,m}'
   s.public_header_files = "*.h"
   s.framework  = "MapKit"

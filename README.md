@@ -15,9 +15,7 @@ To see in action, take a look at [Placeboard](http://www.placeboardapp.com) demo
 Compatibility
 -------------
 
-DistancePicker supports iOS 7 or higher and is written in Swift 3.
-
-**Note**: If you use Carthage, CocoaPods or manually install it as a framework, iOS 8 is required.
+DistancePicker supports iOS 8 or higher and is written in Swift 3.
 
 Installation
 ------------
