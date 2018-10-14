@@ -41,9 +41,9 @@ open class DistancePicker : UIControl, UIDynamicAnimatorDelegate {
 	// Due to a bug in Swift 2.2, we have to call init explicity.
 	//
 	// Was using systemFontOfSize(11) previously.
-	open var markAttributes = [NSAttributedStringKey.font: UIFont.init(name: "Avenir-Medium", size: 13)!,
-	                   NSAttributedStringKey.paragraphStyle: NSMutableParagraphStyle(),
-	                  NSAttributedStringKey.foregroundColor: UIColor.gray.withAlphaComponent(0.8)]
+	open var markAttributes = [NSAttributedString.Key.font: UIFont.init(name: "Avenir-Medium", size: 13)!,
+	                   NSAttributedString.Key.paragraphStyle: NSMutableParagraphStyle(),
+	                  NSAttributedString.Key.foregroundColor: UIColor.gray.withAlphaComponent(0.8)]
 	open var markSpacing = CGFloat(50)
 	open var markColor = UIColor.lightGray
 	open var numberOfIncrementsBetweenMarks = 5
@@ -220,10 +220,10 @@ open class DistancePicker : UIControl, UIDynamicAnimatorDelegate {
 
 	fileprivate func setUp() {
 		usesMetricSystem = shouldUseMetricSystem()
-		formatter.unitStyle = MKDistanceFormatterUnitStyle.abbreviated
+		formatter.unitStyle = MKDistanceFormatter.UnitStyle.abbreviated
 
 		formattedMarks = formattedMarksFromMarks(marks)
-		let style = markAttributes[NSAttributedStringKey.paragraphStyle] as! NSMutableParagraphStyle
+		let style = markAttributes[NSAttributedString.Key.paragraphStyle] as! NSMutableParagraphStyle
 		style.alignment = NSTextAlignment.center;
 
 		animator = UIDynamicAnimator(referenceView: self)
@@ -262,16 +262,16 @@ open class DistancePicker : UIControl, UIDynamicAnimatorDelegate {
     @IBAction open func pan(_ recognizer: UIPanGestureRecognizer) {
 		let velocity = recognizer.velocity(in: self)
 		
-		if recognizer.state == UIGestureRecognizerState.began {
+		if recognizer.state == UIGestureRecognizer.State.began {
 			animator.removeAllBehaviors()
 		}
-		else if recognizer.state == UIGestureRecognizerState.changed {
+		else if recognizer.state == UIGestureRecognizer.State.changed {
 			assert(animator.behaviors.isEmpty)
 
 			offset += recognizer.translation(in: self).x
 			recognizer.setTranslation(CGPoint.zero, in: self)
 		}
-		else if recognizer.state == UIGestureRecognizerState.ended {
+		else if recognizer.state == UIGestureRecognizer.State.ended {
 			assert(animator.behaviors.isEmpty)
 
 			animator.addBehavior(decelerationBehaviorWithVelocity(velocity))
@@ -293,11 +293,11 @@ open class DistancePicker : UIControl, UIDynamicAnimatorDelegate {
 		           withColor: markColor)
 			
 			if (selectedFormattedMark == mark) {
-				let font = attributes[NSAttributedStringKey.font] as! UIFont
+				let font = attributes[NSAttributedString.Key.font] as! UIFont
 				let selectedFont = UIFont(name: "Avenir-Heavy", size: font.pointSize)!
 
-				attributes[NSAttributedStringKey.foregroundColor] = tintColor
-				attributes[NSAttributedStringKey.font] = selectedFont
+				attributes[NSAttributedString.Key.foregroundColor] = tintColor
+				attributes[NSAttributedString.Key.font] = selectedFont
 				
 				// To compute a corrected center:
 				//markValueRect.origin.y -= (selectedFont.capHeight - font.capHeight) / 2

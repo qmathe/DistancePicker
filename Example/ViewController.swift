@@ -61,14 +61,14 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
 	
 	func updateSearchRadiusOverlay() {
 		if let overlay = searchRadiusOverlay {
-			mapView.remove(overlay)
+			mapView.removeOverlay(overlay)
 			searchRadiusOverlay = nil
 		}
 
 		if searchRadiusActive {
 			searchRadiusOverlay = MKCircle(center: mapView.userLocation.coordinate,
 			                                         radius: distancePicker.selectedValue)
-			mapView.add(searchRadiusOverlay!)
+			mapView.addOverlay(searchRadiusOverlay!)
 		}
 	}
 	
