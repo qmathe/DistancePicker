@@ -212,11 +212,11 @@
 					6009E25C1D5226B3006424BD = {
 						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = WZ4X77MGB4;
-						LastSwiftMigration = 0820;
+						LastSwiftMigration = 0940;
 					};
 					6065F48B1D54A9F30063187A = {
 						CreatedOnToolsVersion = 7.3;
-						LastSwiftMigration = 0820;
+						LastSwiftMigration = 0940;
 					};
 				};
 			};
@@ -358,7 +358,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -407,7 +407,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};

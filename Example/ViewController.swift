@@ -54,7 +54,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
 	
 	// MARK: - Updating UI
 	
-	func updateUI() {
+    @IBAction func updateUI() {
 		updateSearchRadiusOverlay()
 		updateVisibleMapRect()
 	}

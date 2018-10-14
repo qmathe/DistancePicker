@@ -41,9 +41,9 @@ open class DistancePicker : UIControl, UIDynamicAnimatorDelegate {
 	// Due to a bug in Swift 2.2, we have to call init explicity.
 	//
 	// Was using systemFontOfSize(11) previously.
-	open var markAttributes = [NSFontAttributeName: UIFont.init(name: "Avenir-Medium", size: 13)!,
-	                   NSParagraphStyleAttributeName: NSMutableParagraphStyle(),
-	                  NSForegroundColorAttributeName: UIColor.gray.withAlphaComponent(0.8)]
+	open var markAttributes = [NSAttributedStringKey.font: UIFont.init(name: "Avenir-Medium", size: 13)!,
+	                   NSAttributedStringKey.paragraphStyle: NSMutableParagraphStyle(),
+	                  NSAttributedStringKey.foregroundColor: UIColor.gray.withAlphaComponent(0.8)]
 	open var markSpacing = CGFloat(50)
 	open var markColor = UIColor.lightGray
 	open var numberOfIncrementsBetweenMarks = 5
@@ -223,7 +223,7 @@ open class DistancePicker : UIControl, UIDynamicAnimatorDelegate {
 		formatter.unitStyle = MKDistanceFormatterUnitStyle.abbreviated
 
 		formattedMarks = formattedMarksFromMarks(marks)
-		let style = markAttributes[NSParagraphStyleAttributeName] as! NSMutableParagraphStyle
+		let style = markAttributes[NSAttributedStringKey.paragraphStyle] as! NSMutableParagraphStyle
 		style.alignment = NSTextAlignment.center;
 
 		animator = UIDynamicAnimator(referenceView: self)
@@ -259,7 +259,7 @@ open class DistancePicker : UIControl, UIDynamicAnimatorDelegate {
 		return decelerationBehavior
 	}
 
-	open func pan(_ recognizer: UIPanGestureRecognizer) {
+    @IBAction open func pan(_ recognizer: UIPanGestureRecognizer) {
 		let velocity = recognizer.velocity(in: self)
 		
 		if recognizer.state == UIGestureRecognizerState.began {
@@ -293,11 +293,11 @@ open class DistancePicker : UIControl, UIDynamicAnimatorDelegate {
 		           withColor: markColor)
 			
 			if (selectedFormattedMark == mark) {
-				let font = attributes[NSFontAttributeName] as! UIFont
+				let font = attributes[NSAttributedStringKey.font] as! UIFont
 				let selectedFont = UIFont(name: "Avenir-Heavy", size: font.pointSize)!
 
-				attributes[NSForegroundColorAttributeName] = tintColor
-				attributes[NSFontAttributeName] = selectedFont
+				attributes[NSAttributedStringKey.foregroundColor] = tintColor
+				attributes[NSAttributedStringKey.font] = selectedFont
 				
 				// To compute a corrected center:
 				//markValueRect.origin.y -= (selectedFont.capHeight - font.capHeight) / 2
