@@ -28,7 +28,7 @@ Add the following line to your Cartfile, run `carthage update` to build the fram
 	
 ### CocoaPods
 
-Add the following lines to your Podfile and run `pod install` with CocoaPods 0.36 or newer.
+Add the following lines to your Podfile and run `pod install` with CocoaPods 1.4.0 or newer.
 
 	use_frameworks!
 	
