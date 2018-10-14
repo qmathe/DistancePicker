@@ -1,6 +1,11 @@
 DistancePicker NEWS
 =================
 
+0.8.2
+-----
+
+- Migrated to Swift 4
+
 0.8.1
 -----
 
