@@ -3,7 +3,7 @@ Distance Picker
 
 [![Build Status](https://travis-ci.org/qmathe/DistancePicker.svg?branch=master)](https://travis-ci.org/qmathe/DistancePicker)
 [![Platforms iOS](https://img.shields.io/badge/Platforms-iOS-lightgray.svg?style=flat)](http://www.apple.com)
-[![Language Swift 3](https://img.shields.io/badge/Language-Swift%204.1-orange.svg?style=flat)](https://swift.org)
+[![Language Swift 4](https://img.shields.io/badge/Language-Swift%204.1-orange.svg?style=flat)](https://swift.org)
 [![License MIT](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](https://github.com/qmathe/DistancePicker/LICENSE)
 
 DistancePicker is a custom UIKit control to select a distance with a pan gesture. It looks like a ruler with multiple distance marks and can be used to resize a map, set up a geofence or choose a search radius.
