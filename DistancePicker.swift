@@ -14,7 +14,11 @@ open class DistancePicker : UIControl, UIDynamicAnimatorDelegate {
 	
 	// MARK: - Cached State
 
-	open var formatter = MKDistanceFormatter()
+    open var formatter: MKDistanceFormatter = {
+        let formatter = MKDistanceFormatter()
+        formatter.unitStyle = .abbreviated
+        return formatter
+    }()
 	
 	// MARK: - Target/Action State
 	
@@ -28,8 +32,8 @@ open class DistancePicker : UIControl, UIDynamicAnimatorDelegate {
 			formattedMarks = formattedMarksFromMarks(marks)
 		}
 	}
-	open var formattedMarks: [String]!
-	open var usesMetricSystem: Bool = true {
+	open lazy var formattedMarks: [String] = formattedMarksFromMarks(marks)
+	open var usesMetricSystem: Bool = shouldUseMetricSystem() {
 		didSet {
 			formatter.units = usesMetricSystem ? .metric : .imperial
 			formattedMarks = formattedMarksFromMarks(marks)
@@ -38,12 +42,20 @@ open class DistancePicker : UIControl, UIDynamicAnimatorDelegate {
 
 	// MARK: - Appearance State
 
+    private let markParagraphStyle: NSMutableParagraphStyle = {
+        let style = NSMutableParagraphStyle()
+        style.alignment = .center
+        return style
+    }()
+    private let markFont = UIFont(name: "Avenir-Medium", size: 13) ?? UIFont.systemFont(ofSize: 11)
 	// Due to a bug in Swift 2.2, we have to call init explicity.
 	//
 	// Was using systemFontOfSize(11) previously.
-	open var markAttributes = [NSAttributedString.Key.font: UIFont.init(name: "Avenir-Medium", size: 13)!,
-	                   NSAttributedString.Key.paragraphStyle: NSMutableParagraphStyle(),
-	                  NSAttributedString.Key.foregroundColor: UIColor.gray.withAlphaComponent(0.8)]
+    open lazy var markAttributes: [NSAttributedString.Key: Any] = [
+        .font: markFont,
+        .paragraphStyle: markParagraphStyle,
+        .foregroundColor: UIColor.gray.withAlphaComponent(0.8)
+    ]
 	open var markSpacing = CGFloat(50)
 	open var markColor = UIColor.lightGray
 	open var numberOfIncrementsBetweenMarks = 5
@@ -186,7 +198,11 @@ open class DistancePicker : UIControl, UIDynamicAnimatorDelegate {
 	// MARK: - Animation State
 
 	fileprivate var dynamicItem = DynamicItem()
-	open var animator: UIDynamicAnimator!
+    open lazy var animator: UIDynamicAnimator = {
+        let animator = UIDynamicAnimator(referenceView: self)
+        animator.delegate = self
+        return animator
+    }()
 
 	open func formattedMarksFromMarks(_ marks: [Double]) -> [String] {
 		// For non-metric system, here is how we interpret the base marks in the 
@@ -219,15 +235,6 @@ open class DistancePicker : UIControl, UIDynamicAnimatorDelegate {
 	// MARK: - Initialization
 
 	fileprivate func setUp() {
-		usesMetricSystem = shouldUseMetricSystem()
-		formatter.unitStyle = .abbreviated
-
-		formattedMarks = formattedMarksFromMarks(marks)
-		let style = markAttributes[NSAttributedString.Key.paragraphStyle] as! NSMutableParagraphStyle
-		style.alignment = NSTextAlignment.center;
-
-		animator = UIDynamicAnimator(referenceView: self)
-		animator.delegate = self
 		addGestureRecognizer(PanGestureRecognizer(target: self, action: #selector(DistancePicker.pan(_:))))
 	}
 
@@ -269,9 +276,9 @@ open class DistancePicker : UIControl, UIDynamicAnimatorDelegate {
 			assert(animator.behaviors.isEmpty)
 
 			offset += recognizer.translation(in: self).x
-			recognizer.setTranslation(CGPoint.zero, in: self)
+			recognizer.setTranslation(.zero, in: self)
 		}
-		else if recognizer.state == UIGestureRecognizer.State.ended {
+		else if recognizer.state == .ended {
 			assert(animator.behaviors.isEmpty)
 
 			animator.addBehavior(decelerationBehaviorWithVelocity(velocity))
@@ -293,11 +300,10 @@ open class DistancePicker : UIControl, UIDynamicAnimatorDelegate {
 		           withColor: markColor)
 			
 			if (selectedFormattedMark == mark) {
-				let font = attributes[NSAttributedString.Key.font] as! UIFont
-				let selectedFont = UIFont(name: "Avenir-Heavy", size: font.pointSize)!
+				let selectedFont = UIFont(name: "Avenir-Heavy", size: markFont.pointSize) ?? UIFont.boldSystemFont(ofSize: markFont.pointSize)
 
-				attributes[NSAttributedString.Key.foregroundColor] = tintColor
-				attributes[NSAttributedString.Key.font] = selectedFont
+				attributes[.foregroundColor] = tintColor
+				attributes[.font] = selectedFont
 				
 				// To compute a corrected center:
 				//markValueRect.origin.y -= (selectedFont.capHeight - font.capHeight) / 2
