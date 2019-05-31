@@ -404,13 +404,13 @@ private class PanGestureRecognizer : UIPanGestureRecognizer {
 	
 	var endEvent: UIEvent?
 
-	func touchesBegan(_ touches: Set<NSObject>!, with event: UIEvent!) {
-		super.touchesBegan(touches as Set<NSObject>, with: event)
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent) {
+        super.touchesBegan(touches, with: event)
 		endEvent = nil
 	}
 
-	func touchesEnded(_ touches: Set<NSObject>!, with event: UIEvent!) {
-		super.touchesEnded(touches as Set<NSObject>, with: event)
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent) {
+		super.touchesEnded(touches, with: event)
 		endEvent = event
 	}
 }
