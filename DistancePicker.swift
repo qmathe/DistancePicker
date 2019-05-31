@@ -220,7 +220,7 @@ open class DistancePicker : UIControl, UIDynamicAnimatorDelegate {
 
 	fileprivate func setUp() {
 		usesMetricSystem = shouldUseMetricSystem()
-		formatter.unitStyle = MKDistanceFormatter.UnitStyle.abbreviated
+		formatter.unitStyle = .abbreviated
 
 		formattedMarks = formattedMarksFromMarks(marks)
 		let style = markAttributes[NSAttributedString.Key.paragraphStyle] as! NSMutableParagraphStyle
