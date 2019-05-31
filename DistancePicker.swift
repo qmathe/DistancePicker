@@ -345,10 +345,10 @@ open class DistancePicker : UIControl, UIDynamicAnimatorDelegate {
 	}
 	
 	open func drawLineFrom(_ startPoint: CGPoint, to endPoint: CGPoint, withColor color: UIColor) {
-		let line = UIBezierPath();
+		let line = UIBezierPath()
 		
-		line.move(to: startPoint);
-		line.addLine(to: endPoint);
+		line.move(to: startPoint)
+		line.addLine(to: endPoint)
 		color.setStroke()
 		line.stroke()
 	}
