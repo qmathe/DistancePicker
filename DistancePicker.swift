@@ -362,17 +362,16 @@ open class DistancePicker : UIControl, UIDynamicAnimatorDelegate {
 		// the offset set with frame.didSet)
 		animator.removeAllBehaviors()
 
+        let panRecognizer = gestureRecognizers?[0] as? PanGestureRecognizer
 		// The picker can become invisible between the moment the user starts to 
 		// swipe accross it and when the deceleration ends. This occurs when 
 		// the user rotates the screen or navigates to the previous/next screen.
-		let hasBecomeInvisible = window == nil
+		let visible = window != nil
 
-		if action == nil || target == nil || hasBecomeInvisible {
+        guard let action = action, let target = target, let recognizer = panRecognizer, visible else {
 			return
 		}
-		sendAction(action!,
-		       to: target!,
-		 for: (gestureRecognizers![0] as! PanGestureRecognizer).endEvent)
+        sendAction(action, to: target, for: recognizer.endEvent)
 	}
 }
 
