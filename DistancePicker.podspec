@@ -13,7 +13,7 @@ Pod::Spec.new do |s|
   s.swift_version = "5.0"
   s.platform     = :ios, "8.0"
 
-  s.source       = { :git => "https://github.com/qmathe/DistancePicker.git", :tag => "0.8.4" }
+  s.source       = { :git => "https://github.com/qmathe/DistancePicker.git" }
   s.source_files = '*.swift', '*.{h,m}'
   s.public_header_files = "*.h"
   s.framework  = "MapKit"
