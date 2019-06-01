@@ -19,7 +19,7 @@ DistancePicker requires at least Xcode 9 and supports iOS 8 or higher.
 
 | Swift   | DistancePicker                                                                                                                                                                                                                     |
 | ------- |  -------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 5         | [0.8.4](https://github.com/qmathe/DistancePicker/releases/tag/0.8.4)                                                                                                                               |
+| 5         | [0.8.4](https://github.com/qmathe/DistancePicker/releases/tag/0.8.4) or master                                                                                                               |
 | 4.2      | [0.8.3](https://github.com/qmathe/DistancePicker/releases/tag/0.8.3) or branch [swift-4.2](https://github.com/qmathe/DistancePicker/tree/swift-4.2) |
 | 4.X      | [0.8.2](https://github.com/qmathe/DistancePicker/releases/tag/0.8.2) or branch [swift-4.1](https://github.com/qmathe/DistancePicker/tree/swift-4.1) |
 | 3.X      | [0.8.1](https://github.com/qmathe/DistancePicker/releases/tag/0.8.1) or branch [swift-3.2](https://github.com/qmathe/DistancePicker/tree/swift-3.2) |
