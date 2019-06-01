@@ -5,5 +5,5 @@ notifications:
       - quentin.mathe@gmail.com
 xcode_project: DistancePicker.xcodeproj
 xcode_scheme: DistancePicker
-osx_image: xcode10
-script: xcodebuild -project DistancePicker.xcodeproj -scheme DistancePicker build  CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
+osx_image: xcode10.2
+script: xcodebuild -project DistancePicker.xcodeproj -scheme DistancePicker build  CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO
