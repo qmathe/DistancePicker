@@ -14,5 +14,3 @@ FOUNDATION_EXPORT double DistancePickerVersionNumber;
 FOUNDATION_EXPORT const unsigned char DistancePickerVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <DistancePicker/PublicHeader.h>
-
-#import <DistancePicker/UIGestureRecognizer+MissingPublicAPI.h>

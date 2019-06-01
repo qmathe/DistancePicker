@@ -18,7 +18,6 @@
 		6065F49A1D54AB6D0063187A /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6009E2781D522764006424BD /* MapKit.framework */; };
 		6065F49C1D54AB730063187A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6065F49B1D54AB730063187A /* Foundation.framework */; };
 		6065F49E1D54AB7D0063187A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6065F49D1D54AB7D0063187A /* UIKit.framework */; };
-		6065F49F1D54ACBE0063187A /* UIGestureRecognizer+MissingPublicAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = 6009E2821D5239FF006424BD /* UIGestureRecognizer+MissingPublicAPI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6065F4A01D54ADDF0063187A /* DistancePicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6065F48C1D54A9F30063187A /* DistancePicker.framework */; };
 		6065F4A11D54ADDF0063187A /* DistancePicker.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6065F48C1D54A9F30063187A /* DistancePicker.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
@@ -59,7 +58,6 @@
 		6009E2741D522715006424BD /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		6009E2761D52271C006424BD /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		6009E2781D522764006424BD /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		6009E2821D5239FF006424BD /* UIGestureRecognizer+MissingPublicAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIGestureRecognizer+MissingPublicAPI.h"; sourceTree = "<group>"; };
 		600E8C4E1D5894FB00AFD10E /* DistancePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DistancePicker.h; sourceTree = SOURCE_ROOT; };
 		6023BE4C1F93D06000D70C5E /* NEWS.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = NEWS.md; sourceTree = "<group>"; };
 		6065F48C1D54A9F30063187A /* DistancePicker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DistancePicker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -98,7 +96,6 @@
 				6023BE4C1F93D06000D70C5E /* NEWS.md */,
 				6009E2761D52271C006424BD /* LICENSE */,
 				6009E2721D522704006424BD /* DistancePicker.swift */,
-				6009E2821D5239FF006424BD /* UIGestureRecognizer+MissingPublicAPI.h */,
 				6065F48D1D54A9F30063187A /* Supporting Files */,
 				6009E25F1D5226B3006424BD /* Example */,
 				6009E2811D523996006424BD /* Frameworks */,
@@ -154,7 +151,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6065F49F1D54ACBE0063187A /* UIGestureRecognizer+MissingPublicAPI.h in Headers */,
 				600E8C4F1D5894FF00AFD10E /* DistancePicker.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
